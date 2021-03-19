@@ -54,12 +54,11 @@ class YourModel(tf.keras.Model):
 
         self.architecture = [
                tf.keras.layers.Conv2D(96, 11, strides=(4,4), use_bias=True),
-               tf.keras.layers.Dropout(.1),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Conv2D(256, 5, strides=(1,1), use_bias=True),
-               tf.keras.layers.Dropout(.1),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Conv2D(312, 3, use_bias=True),
+               tf.keras.layers.Dropout(.1),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Flatten(),
                tf.keras.layers.Dense(400, activation="relu", use_bias=True),
