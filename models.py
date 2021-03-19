@@ -54,7 +54,7 @@ class YourModel(tf.keras.Model):
 
         self.architecture = [
                tf.keras.layers.Conv2D(96, 11, strides=(4,4), use_bias=True, padding="valid", activation="relu"),
-               tf.keras.layers.MaxPooling2D((3,3), strides=(3,3)),
+               tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Conv2D(256, 5, strides=(1,1), use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Conv2D(384, 3, use_bias=True, padding="same", activation="relu"),
@@ -67,7 +67,7 @@ class YourModel(tf.keras.Model):
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(4000, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(700, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(4000, activation="relu", use_bias=True),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
         ]
 
