@@ -53,19 +53,20 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(90, 16, strides=(2,2), use_bias=True, padding="same"),
+               tf.keras.layers.Conv2D(96, 11, strides=(4,4), use_bias=True, padding="valid"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(160, 10, strides=(1,1), use_bias=True, padding="same"),
+               tf.keras.layers.Conv2D(256, 5, strides=(1,1), use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(228, 7, use_bias=True, padding="same"),
+               tf.keras.layers.Conv2D(384, 3, use_bias=True, padding="same"),
+              #  tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
+               tf.keras.layers.Conv2D(384, 3, use_bias=True, padding="same"),
+              #  tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
+               tf.keras.layers.Conv2D(256, 3, use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(360, 3, use_bias=True, padding="same"),
-               tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(320, 2, use_bias=True, padding="same"),
                tf.keras.layers.Flatten(),
-               tf.keras.layers.Dense(700, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(1900, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(700, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
         ]
@@ -143,9 +144,20 @@ class VGGModel(tf.keras.Model):
         #       pretrained VGG16 weights into place so that only the classificaiton
         #       head is trained.
 
+        for i in range(self.vgg16.size):
+               self.vgg16[i].trainable = False
+
+
         # TODO: Write a classification head for our 15-scene classification task.
 
-        self.head = []
+        self.head = [
+               tf.keras.layers.Flatten(),
+               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
+              #  tf.keras.layers.Dropout(.5),
+               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
+              #  tf.keras.layers.Dropout(.5),
+               tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
+        ]
 
         # Don't change the below:
         self.vgg16 = tf.keras.Sequential(self.vgg16, name="vgg_base")
