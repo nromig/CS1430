@@ -53,16 +53,17 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(64, 16, strides=(2,2), use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(90, 16, strides=(2,2), use_bias=True, activation="relu", padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(128, 8, strides=(1,1), use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(160, 10, strides=(1,1), use_bias=True, activation="relu", padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(196, 5, use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(228, 8, use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
+               tf.keras.layers.Conv2D(320, 5, use_bias=True, activation="relu", padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Conv2D(320, 3, use_bias=True, activation="relu", padding="same"),
-               tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
                tf.keras.layers.Flatten(),
-               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(700, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(500, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
