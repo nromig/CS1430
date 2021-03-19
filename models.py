@@ -53,15 +53,15 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(90, 16, strides=(2,2), use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(90, 16, strides=(2,2), use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(160, 8, strides=(1,1), use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(160, 10, strides=(1,1), use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(228, 5, use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(228, 7, use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(320, 3, use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(360, 3, use_bias=True, padding="same"),
                tf.keras.layers.MaxPooling2D((3,3), strides=(2,2)),
-               tf.keras.layers.Conv2D(320, 3, use_bias=True, activation="relu", padding="same"),
+               tf.keras.layers.Conv2D(320, 2, use_bias=True, padding="same"),
                tf.keras.layers.Flatten(),
                tf.keras.layers.Dense(700, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
@@ -96,7 +96,7 @@ class VGGModel(tf.keras.Model):
         # TODO: Select an optimizer for your network (see the documentation
         #       for tf.keras.optimizers)
 
-        self.optimizer = None
+        self.optimizer = tf.keras.optimizers.Adam(learning_rate=hp.learning_rate)
 
         # Don't change the below:
 
@@ -166,4 +166,7 @@ class VGGModel(tf.keras.Model):
         # TODO: Select a loss function for your network (see the documentation
         #       for tf.keras.losses)
 
-        pass
+        scce = tf.keras.losses.SparseCategoricalCrossentropy()
+       #  print(labels.shape)
+       #  print(predictions.shape)
+        return scce(labels, predictions)
