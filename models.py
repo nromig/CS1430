@@ -75,7 +75,7 @@ class YourModel(tf.keras.Model):
 
                tf.keras.layers.Flatten(),
                tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(512, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(1028, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(256, activation="relu", use_bias=True),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
