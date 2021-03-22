@@ -55,11 +55,11 @@ class YourModel(tf.keras.Model):
         self.architecture = [
                tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
                tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
-               tf.keras.layers.MaxPool2D(2),
+               tf.keras.layers.MaxPool2D(3),
 
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
-               tf.keras.layers.MaxPool2D(2),
+               tf.keras.layers.MaxPool2D(3),
 
                tf.keras.layers.Conv2D(256, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(256, 3, 1, use_bias=True, padding="same", activation="relu"),
