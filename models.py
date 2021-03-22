@@ -53,8 +53,11 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
-               tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(32, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(32, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.MaxPool2D(2),
+               tf.keras.layers.Conv2D(64, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(64, 3, 1, use_bias=True, padding="valid", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
