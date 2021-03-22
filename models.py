@@ -53,33 +53,24 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(32, 3, 1, use_bias=True, padding="valid", activation="relu"),
-               tf.keras.layers.Conv2D(32, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(96, 3, 1, use_bias=True, padding="valid", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
-
-               tf.keras.layers.Conv2D(64, 3, 1, use_bias=True, padding="same", activation="relu"),
-               tf.keras.layers.Conv2D(64, 3, 1, use_bias=True, padding="same", activation="relu"),
-               tf.keras.layers.MaxPool2D(2),
-
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(128, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
-
-               tf.keras.layers.Conv2D(256, 3, use_bias=True, padding="same", activation="relu"),
-               tf.keras.layers.Conv2D(256, 3, use_bias=True, padding="same", activation="relu"),
+               tf.keras.layers.Conv2D(256, 3, 1, use_bias=True, padding="same", activation="relu"),
+               tf.keras.layers.Conv2D(256, 3, 1, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
-
                tf.keras.layers.Conv2D(384, 3, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(384, 3, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
-
                tf.keras.layers.Conv2D(512, 3, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(512, 3, use_bias=True, padding="same", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
-
                tf.keras.layers.Flatten(),
                tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(512, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(1028, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(256, activation="relu", use_bias=True),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
