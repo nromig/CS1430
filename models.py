@@ -20,7 +20,7 @@ class YourModel(tf.keras.Model):
         # TODO: Select an optimizer for your network (see the documentation
         #       for tf.keras.optimizers)
 
-        self.optimizer = tf.keras.optimizers.Adam(learning_rate=hp.learning_rate)
+        self.optimizer = tf.keras.optimizers.RMSprop(learning_rate=hp.learning_rate, momentum=hp.momentum)
 
         # TODO: Build your own convolutional neural network, using Dropout at
         #       least once. The input image will be passed through each Keras
@@ -53,8 +53,8 @@ class YourModel(tf.keras.Model):
         #             explicitly reshape any tensors anywhere in your network.
 
         self.architecture = [
-               tf.keras.layers.Conv2D(32, 3, 1, use_bias=False, padding="valid", activation="relu"),
-               tf.keras.layers.Conv2D(32, 3, 1, use_bias=False, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(32, 5, 1, use_bias=False, padding="valid", activation="relu"),
+               tf.keras.layers.Conv2D(32, 5, 1, use_bias=False, padding="valid", activation="relu"),
                tf.keras.layers.MaxPool2D(2),
                tf.keras.layers.Conv2D(64, 3, 1, use_bias=False, padding="valid", activation="relu"),
                tf.keras.layers.Conv2D(64, 3, 1, use_bias=False, padding="valid", activation="relu"),
@@ -70,11 +70,11 @@ class YourModel(tf.keras.Model):
                tf.keras.layers.MaxPool2D(2),
                tf.keras.layers.Conv2D(512, 3, use_bias=False, padding="same", activation="relu"),
                tf.keras.layers.Conv2D(512, 3, use_bias=False, padding="same", activation="relu"),
-               tf.keras.layers.MaxPool2D(2),
+              #  tf.keras.layers.MaxPool2D(2),
                tf.keras.layers.Flatten(),
-               tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(1028, activation="relu", use_bias=True),
-               tf.keras.layers.Dropout(.5),
+               tf.keras.layers.Dropout(.3),
+               tf.keras.layers.Dense(384, activation="relu", use_bias=True),
+               tf.keras.layers.Dropout(.3),
                tf.keras.layers.Dense(256, activation="relu", use_bias=True),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
         ]
@@ -105,7 +105,7 @@ class VGGModel(tf.keras.Model):
         # TODO: Select an optimizer for your network (see the documentation
         #       for tf.keras.optimizers)
 
-        self.optimizer = tf.keras.optimizers.Adam(learning_rate=hp.learning_rate)
+        self.optimizer = tf.keras.optimizers.RMSprop(learning_rate=hp.learning_rate, momentum=hp.momentum)
 
         # Don't change the below:
 
@@ -162,7 +162,7 @@ class VGGModel(tf.keras.Model):
                tf.keras.layers.Flatten(),
                tf.keras.layers.Dense(512, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(128, activation="relu", use_bias=True),
+               tf.keras.layers.Dense(384, activation="relu", use_bias=True),
                tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
         ]
