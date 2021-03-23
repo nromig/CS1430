@@ -152,7 +152,7 @@ class VGGModel(tf.keras.Model):
         #       pretrained VGG16 weights into place so that only the classificaiton
         #       head is trained.
 
-        for i in range(self.vgg16.size):
+        for i in range(len(self.vgg16)):
                self.vgg16[i].trainable = False
 
 
