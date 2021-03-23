@@ -160,10 +160,10 @@ class VGGModel(tf.keras.Model):
 
         self.head = [
                tf.keras.layers.Flatten(),
-               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
-              #  tf.keras.layers.Dropout(.5),
-               tf.keras.layers.Dense(500, activation="relu", use_bias=True),
-              #  tf.keras.layers.Dropout(.5),
+               tf.keras.layers.Dense(512, activation="relu", use_bias=True),
+               tf.keras.layers.Dropout(.5),
+               tf.keras.layers.Dense(128, activation="relu", use_bias=True),
+               tf.keras.layers.Dropout(.5),
                tf.keras.layers.Dense(15, activation="softmax", use_bias=True)
         ]
 
